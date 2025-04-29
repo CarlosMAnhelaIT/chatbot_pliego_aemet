@@ -5,8 +5,8 @@ import re
 import time
 
 # ---------------- Configuración -----------------
-GENAI_API_KEY = "AIzaSyCPhvLFkQlhVyKsXsgR9EZi09QmmlN3V-k"
-PINECONE_API_KEY = "pcsk_2bRoe6_3Nysegtmsfj3NT4D2Zemd2Vd5KPAniF6hjCRRqgyLeStcGZvrBAMgZaunAE4ohF"
+GENAI_API_KEY     = st.secrets["GENAI_API_KEY"]
+PINECONE_API_KEY  = st.secrets["PINECONE_API_KEY"]
 INDEX_NAME = "proyecto-aemet"
 MIN_SIMILARITY_SCORE = 0.50  # umbral mínimo de similitud
 TOP_K = 5  # número de fragmentos a recuperar
