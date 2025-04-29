@@ -10,6 +10,9 @@ PINECONE_API_KEY  = st.secrets["PINECONE_API_KEY"]
 INDEX_NAME = "proyecto-aemet"
 MIN_SIMILARITY_SCORE = 0.50  # umbral mínimo de similitud
 TOP_K = 5  # número de fragmentos a recuperar
+USER_ICON     = "👤"
+ASSISTANT_ICON = "🤖"
+
 
 # Inicializar APIs
 genai.configure(api_key=GENAI_API_KEY)
@@ -120,7 +123,7 @@ for msg in st.session_state.conversation:
 user_input = st.chat_input("Escribe tu consulta sobre el pliego aquí...")
 if user_input:
     st.session_state.conversation.append({'role': 'Usuario', 'content': user_input})
-    with st.chat_message('usuario'):
+    with st.chat_message('usuario', avatar=USER_ICON):
         st.markdown(user_input)
 
     with st.spinner("Procesando tu consulta..."):
@@ -174,7 +177,7 @@ if user_input:
 
     # Guardar y mostrar respuesta
     st.session_state.conversation.append({'role':'Asistente','content': answer,'fragments': retrieved})
-    with st.chat_message('asistente'):
+    with st.chat_message('asistente', avatar=ASSISTANT_ICON):
         st.markdown(answer)
         with st.expander("📚 Mostrar fragmentos recuperados"):
             display_fragments(retrieved)
